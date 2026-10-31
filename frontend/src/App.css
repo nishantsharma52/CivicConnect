@@ -1,0 +1,356 @@
+@import "tailwindcss" source(none);
+
+@source "../src";
+
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+
+@theme inline {
+    --radius-sm: calc(var(--radius) - 3px);
+    --radius-md: calc(var(--radius) - 1px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 3px);
+
+    --font-sans: "Manrope", sans-serif;
+    --font-display: "Plus Jakarta Sans", sans-serif;
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary-soft: var(--primary-soft);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-ring-offset-background: var(--background);
+
+    --color-success: var(--success);
+    --color-success-soft: var(--success-soft);
+
+    --color-warning: var(--warning);
+    --color-warning-soft: var(--warning-soft);
+
+    --color-danger: var(--danger);
+    --color-danger-soft: var(--danger-soft);
+
+    --color-info: var(--info);
+    --color-info-soft: var(--info-soft);
+
+    --color-civic-dark: var(--civic-dark);
+    --color-civic-dark-foreground: var(--civic-dark-foreground);
+    --color-civic-dark-muted: var(--civic-dark-muted);
+    --color-civic-dark-accent: var(--civic-dark-accent);
+    --color-civic-dark-border: var(--civic-dark-border);
+
+    --color-app: var(--app);
+    --color-map: var(--map);
+    --color-overlay: var(--overlay);
+}
+
+
+:root {
+    --radius: .55rem;
+
+    --background: oklch(.985 .004 255);
+    --foreground: oklch(.22 .035 256);
+
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(.22 .035 256);
+
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(.22 .035 256);
+
+    --primary: oklch(.53 .19 259);
+    --primary-foreground: oklch(.99 0 0);
+    --primary-soft: oklch(.95 .035 256);
+
+    --secondary: oklch(.955 .012 248);
+    --secondary-foreground: oklch(.27 .04 257);
+
+    --muted: oklch(.96 .007 255);
+    --muted-foreground: oklch(.52 .03 257);
+
+    --accent: oklch(.94 .025 253);
+    --accent-foreground: oklch(.3 .08 257);
+
+    --destructive: oklch(.58 .22 27);
+    --destructive-foreground: oklch(.99 0 0);
+
+    --border: oklch(.9 .012 255);
+    --input: oklch(.88 .016 255);
+    --ring: oklch(.58 .16 259);
+
+    --success: oklch(.55 .145 153);
+    --success-soft: oklch(.95 .045 153);
+
+    --warning: oklch(.61 .15 70);
+    --warning-soft: oklch(.96 .055 84);
+
+    --danger: oklch(.58 .22 27);
+    --danger-soft: oklch(.95 .04 27);
+
+    --info: oklch(.52 .16 249);
+    --info-soft: oklch(.95 .035 247);
+
+    --civic-dark: oklch(.25 .055 257);
+    --civic-dark-foreground: oklch(.98 .003 250);
+    --civic-dark-muted: oklch(.78 .025 251);
+    --civic-dark-accent: oklch(.72 .15 230);
+    --civic-dark-border: oklch(.38 .05 256);
+
+    --app: oklch(.975 .006 255);
+    --map: oklch(.95 .018 210);
+    --overlay: oklch(.16 .03 256 / .45);
+
+    --shadow-civic:
+        0 14px 40px -18px
+        oklch(.3 .07 257 / .28);
+}
+
+
+/* Global Styles */
+* {
+    border-color: var(--border);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+    transition-duration: 180ms;
+}
+
+
+/* Common Panel */
+.panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    box-shadow:
+        0 4px 18px -14px
+        oklch(.25 .05 257 / .35);
+}
+
+
+/* Form Field */
+.field {
+    width: 100%;
+    height: 2.35rem;
+
+    border: 1px solid var(--input);
+    border-radius: var(--radius-sm);
+
+    background: var(--card);
+
+    padding: .5rem .75rem;
+
+    font-size: .875rem;
+
+    outline: none;
+    color: var(--foreground);
+}
+
+.field:focus {
+    border-color: var(--ring);
+
+    box-shadow:
+        0 0 0 3px
+        color-mix(
+            in oklab,
+            var(--ring) 15%,
+            transparent
+        );
+}
+
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+}
+
+.section-inner {
+    max-width: 80rem;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+
+/* Public Page */
+.page-public {
+    min-height: calc(100vh - 68px);
+    background: var(--app);
+}
+
+
+/* Step Card */
+.step-card {
+    border-top: 3px solid var(--primary);
+    background: var(--card);
+
+    padding: 1.5rem;
+
+    box-shadow:
+        0 8px 24px -18px
+        oklch(.25 .05 257 / .35);
+}
+
+
+/* Backgrounds */
+.bg-hero {
+    background:
+        linear-gradient(
+            125deg,
+            var(--background),
+            var(--primary-soft)
+        );
+}
+
+.bg-auth {
+    background:
+        linear-gradient(
+            140deg,
+            var(--app),
+            var(--primary-soft)
+        );
+}
+
+
+/* Civic Shadow */
+.shadow-civic {
+    box-shadow: var(--shadow-civic);
+}
+
+
+/* Map Grid */
+.map-grid {
+    background-image:
+        linear-gradient(
+            color-mix(
+                in oklab,
+                var(--primary) 7%,
+                transparent
+            ) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            color-mix(
+                in oklab,
+                var(--primary) 7%,
+                transparent
+            ) 1px,
+            transparent 1px
+        );
+
+    background-size: 28px 28px;
+}
+
+
+/* Map Routes */
+.bg-map-routes {
+    background:
+        linear-gradient(
+            30deg,
+            transparent 47%,
+            var(--card) 48%,
+            var(--card) 52%,
+            transparent 53%
+        ),
+        linear-gradient(
+            150deg,
+            transparent 44%,
+            var(--card) 45%,
+            var(--card) 49%,
+            transparent 50%
+        );
+}
+
+
+/* Donut Chart */
+.donut {
+    background:
+        conic-gradient(
+            var(--success) 0 60%,
+            var(--warning) 60% 82%,
+            var(--primary) 82%
+        );
+}
+
+
+/* Responsive Section */
+@media (min-width: 640px) {
+    .section-inner {
+        padding: 0 1.5rem;
+    }
+}
+
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+
+
+
+/* --------------------------------------------------
+   Hide Scrollbar
+   Keep page scrolling enabled
+-------------------------------------------------- */
+
+html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
